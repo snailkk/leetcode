@@ -24,7 +24,7 @@ ListNode * push_back(ListNode *head,int x){
 	return head;
 }
 
-ListNode * creat(int n){
+ListNode * create(int n){
 	ListNode *head = nullptr;
 	int x;
 	cout << "input node val:"<< endl;
@@ -41,17 +41,21 @@ ListNode * creat(int n){
 }
 
 void visit(ListNode *head){
-	while(head){
+	while(head != nullptr){
 		cout << head -> val << ' ';
 		head = head -> next;
 	}
 	cout << endl;
 }
-int main(){
-	int n;
-	cout << "input the list size:" << endl;
-	cin >> n;
-	ListNode *head = creat(n);
-	visit(head);
-	return 0;
+ListNode * reverseCreate(int n){
+	ListNode *head = nullptr;
+	cout << "input the node val:" << endl;
+	while(n--){
+		int x;
+		cin >> x;
+		ListNode * newptr = new ListNode(x,nullptr);
+		newptr -> next = head;
+		head = newptr;
+	}
+	return head;
 }
