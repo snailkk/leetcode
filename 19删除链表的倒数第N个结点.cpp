@@ -29,13 +29,31 @@ public:
         return head;
     }
 };
+class Solution2{
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode *first = head,*second = head,*tmp = new ListNode(0);
+        for(int i = 0;i < n;i++){
+            first = first -> next;
+        }
+        while(first){
+            first = first -> next;
+            tmp -> next  = second;
+            second = second ->next;
+        }
+        if(tmp -> next) tmp -> next -> next= second ->next;
+        if(second == head && !(head -> next)) return nullptr;
+        else if(second == head) return head -> next;
+        else return head;
+    }
+};
 int main(){
     int n;
     cout << "input the list size:" << endl;
     cin >> n;
     ListNode * head = create(n);
-    Solution s;
-    ListNode * node = s.removeNthFromEnd(head,3);
+    Solution2 s;
+    ListNode * node = s.removeNthFromEnd(head,1);
     visit(node);
     return 0;
 }
